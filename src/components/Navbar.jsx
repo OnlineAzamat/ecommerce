@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from 'react'
+import { Link } from "react-router-dom"
+import { useSelector } from "react-redux";
 
 function Navbar() {
+    const state = useSelector((state) => state.handleCart)
     const token = window.localStorage.getItem('token');
 
     const [navPos, setnavPos] = useState("static");
@@ -23,36 +26,42 @@ function Navbar() {
             <header className="p-3" style={{backdropFilter: navFilter, backgroundColor: navColor}}>
                 <div className="container">
                     <div className="d-flex flex-wrap align-items-center justify-content-center justify-content-lg-start">
-                        <a href="/" className="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
+                        <Link to="/" className="d-flex align-items-center mb-2 mb-lg-0 text-white text-decoration-none">
                             <svg className="bi me-2" width="40" height="32" role="img" aria-label="Bootstrap"><use xlink:href="#bootstrap"></use></svg>
                             <img src="https://www.svgrepo.com/show/228332/shopping-cart.svg" className="bi me-2" width="40" height="32" aria-label="Bootstrap" alt="logo" />
-                        </a>
+                        </Link>
                         <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                            <li><a href="#" className="nav-link px-2 text-secondary">Home</a></li>
-                            <li><a href="#" className="nav-link px-2 text-white">Products</a></li>
-                            <li><a href="#" className="nav-link px-2 text-white">About</a></li>
-                            <li><a href="#" className="nav-link px-2 text-white">Contact</a></li>
+                            <li><Link to="/" className="nav-link px-2 text-secondary">Home</Link></li>
+                            <li><Link to="/products" className="nav-link px-2 text-white">Products</Link></li>
+                            <li><Link to="/about" className="nav-link px-2 text-white">About</Link></li>
+                            <li><Link to="/contact" className="nav-link px-2 text-white">Contact</Link></li>
                         </ul>
                         <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
                             <input type="search" className="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search" />
                         </form>
                         <div className="text-end">
                             {
-                                token ? 
+                                !token ? 
                                 (
                                     <button type="button" className="btn btn-outline-light position-relative">
-                                        <i className='fa fa-shopping-cart me-2'></i>
-                                        Cart
-                                        <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                            3
-                                            <span className="visually-hidden">unread messages</span>
-                                        </span>
+                                        <Link to={"/cart"}>
+                                            <i className='fa fa-shopping-cart me-2'></i>
+                                            Cart
+                                            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                {state.length}
+                                                <span className="visually-hidden">unread messages</span>
+                                            </span>
+                                        </Link>
                                     </button>
                                 ) : 
                                 (
                                     <>
-                                        <button type="button" className="btn btn-outline-light me-2">Login</button>
-                                        <button type="button" className="btn btn-warning">Sign-up</button>
+                                        <Link to={"/login"}>
+                                            <button type="button" className="btn btn-outline-light me-2">Login</button>
+                                        </Link>
+                                        <Link to={"/sign-up"}>
+                                            <button type="button" className="btn btn-warning">Sign-up</button>
+                                        </Link>
                                     </>
                                 )
                             }

@@ -1,5 +1,8 @@
 import axios from 'axios';
 import React, { useState, useEffect } from 'react'
+import Skeleton from 'react-loading-skeleton';
+import 'react-loading-skeleton/dist/skeleton.css'
+import { Link } from 'react-router-dom';
 
 function Products() {
     const [data, setdata] = useState([]);
@@ -13,7 +16,7 @@ function Products() {
     
     const getProducts = async () => {
         setLoading(true);
-        const response = await fetch("https://api.storerestapi.com/products")
+        const response = await fetch("https://fakestoreapi.com/products")
         if(componentMounted) {
             setdata(await response.clone().json());
             setFilter(await response.json());
@@ -24,22 +27,37 @@ function Products() {
 
     const Loading = () => {
         return (
-            <><div class="lds-ripple">
-                <div></div>
-                <div></div>
-            </div></>
+            <>
+                <div className="col-md-3">
+                    <Skeleton height={350} />
+                </div>
+                <div className="col-md-3">
+                    <Skeleton height={350} />
+                </div>
+                <div className="col-md-3">
+                    <Skeleton height={350} />
+                </div>
+                <div className="col-md-3">
+                    <Skeleton height={350} />
+                </div>
+            </>
         )
+    }
+
+    const filterProduct = (cat) => {
+        const updateList = data.filter((x) =>x.category === cat);
+        setFilter(updateList);
     }
 
     const ShowProducts = () => {
         return (
             <>
                 <div className="buttons d-flex justify-content-center mb-5 pb-5">
-                    <button className="btn btn-outline-dark me-2">All</button>
-                    <button className="btn btn-outline-dark me-2">Men's Clothing</button>
-                    <button className="btn btn-outline-dark me-2">Women's Clothing</button>
-                    <button className="btn btn-outline-dark me-2">Jewelery Clothing</button>
-                    <button className="btn btn-outline-dark me-2">Electronic</button>
+                    <button className="btn btn-outline-dark me-2" onClick={() => setFilter(data)}>All</button>
+                    <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("men's clothing")}>Men's Clothing</button>
+                    <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("women's clothing")}>Women's Clothing</button>
+                    <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("jewelery")}>Jewelery Clothing</button>
+                    <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("electronics")}>Electronic</button>
                 </div>
                 {
                     filter.map(( products ) => {
@@ -47,11 +65,13 @@ function Products() {
                             <>
                                 <div className="col-md-3">
                                     <div className="card">
-                                        <img src={products.img} className='card-img-top' alt="card-img" />
+                                        <img src={products.image} className='card-img-top p-5' alt="card-img" />
                                         <div className="card-body">
-                                            <h5 className='card-title'></h5>
-                                            <p className='card-text'></p>
-                                            <a href="#" className='btn -btn-primary'></a>
+                                            <h5 className='card-title'>{
+                                                products.title.substring(0,15)
+                                            }</h5>
+                                            <p className='card-text'>${products.price}</p>
+                                            <Link to={`/products/${products.id}`} className='btn btn-primary'>Buy Now</Link>
                                         </div>
                                     </div>
                                 </div>
