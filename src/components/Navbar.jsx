@@ -6,13 +6,19 @@ function Navbar() {
     const state = useSelector((state) => state.handleCart)
     const token = window.localStorage.getItem('token');
 
-    const [navPos, setnavPos] = useState("static");
+    const [navPos, setnavPos] = useState("absolute");
     const [navFilter, setnavFilter] = useState("blur(0)");
     const [navColor, setnavColor] = useState("rgb(33,37,41)");
     const listenScrollEvent = () => {
-        window.scrollY > 72 ? setnavPos("fixed") : setnavPos("static");
-        window.scrollY > 72 ? setnavFilter("blur(13px)") : setnavFilter("blur(0)");
-        window.scrollY > 72 ? setnavColor("rgba(0,0,0,.1)") : setnavColor("rgb(33,37,41)");
+        if(window.scrollY > 72) {
+            setnavPos("fixed");
+            setnavFilter("blur(13px)");
+            setnavColor("rgba(0,0,0,.1)");
+        } else{
+            setnavPos("absolute");
+            setnavFilter("blur(0)");
+            setnavColor("rgb(33,37,41)");
+        }
     };
     useEffect(() => {
         window.addEventListener("scroll", listenScrollEvent);
@@ -31,28 +37,34 @@ function Navbar() {
                             <img src="https://www.svgrepo.com/show/228332/shopping-cart.svg" className="bi me-2" width="40" height="32" aria-label="Bootstrap" alt="logo" />
                         </Link>
                         <ul className="nav col-12 col-lg-auto me-lg-auto mb-2 justify-content-center mb-md-0">
-                            <li><Link to="/" className="nav-link px-2 text-secondary">Home</Link></li>
-                            <li><Link to="/products" className="nav-link px-2 text-white">Products</Link></li>
-                            <li><Link to="/about" className="nav-link px-2 text-white">About</Link></li>
-                            <li><Link to="/contact" className="nav-link px-2 text-white">Contact</Link></li>
+                            <li><Link to="/" className="nav-link px-2" style={{color: "#adb5bd"}}>Home</Link></li>
+                            <li><Link to="/products" className="nav-link px-2">Products</Link></li>
+                            <li><Link to="/about" className="nav-link px-2">About</Link></li>
+                            <li><Link to="/contact" className="nav-link px-2">Contact</Link></li>
                         </ul>
                         <form className="col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3" role="search">
-                            <input type="search" className="form-control form-control-dark text-bg-dark" placeholder="Search..." aria-label="Search" />
+                            <input type="search" style={{backgroundColor: "transparent"}} className="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
                         </form>
                         <div className="text-end">
                             {
                                 !token ? 
                                 (
-                                    <button type="button" className="btn btn-outline-light position-relative">
-                                        <Link to={"/cart"}>
-                                            <i className='fa fa-shopping-cart me-2'></i>
-                                            Cart
-                                            <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
-                                                {state.length}
-                                                <span className="visually-hidden">unread messages</span>
-                                            </span>
+                                    <>
+                                        <Link to={"/favourites"} className="me-2">
+                                            <button className='favourite-btn'>
+                                                <i className="fa fa-heart" style={{color: "red"}}></i>
+                                            </button>
                                         </Link>
-                                    </button>
+                                        <Link to={"/cart"}>
+                                            <button className='favourite-btn position-relative'>
+                                                <i className="fa fa-shopping-cart" style={{color: "#fff"}}></i>
+                                                <span className="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-danger">
+                                                    {state.length}
+                                                    <span className="visually-hidden">unread messages</span>
+                                                </span>
+                                            </button>
+                                        </Link>
+                                    </>
                                 ) : 
                                 (
                                     <>
