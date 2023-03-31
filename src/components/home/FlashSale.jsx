@@ -1,10 +1,26 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Timer from './Timer'
-import { CCarousel, CCarouselCaption, CCarouselItem, CImage } from "@coreui/react"
+import { CCarousel, CCarouselItem } from "@coreui/react"
+import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 function FlashSale() {
+    const [flashData, setFlashData] = useState([])
     const time = new Date();
     time.setMinutes(time.getMinutes() + 720);
+
+    useEffect(() => {
+        getFlashData()
+    }, [])
+
+    function getFlashData() {
+        axios.get('https://fakestoreapi.com/products?limit=10')
+            .then(data => {
+                console.log(data.data)
+                setFlashData(data.data)
+            })
+            .catch(err => console.log(err))
+    }
 
     return (
         <div className='container flash-sale'>
@@ -13,27 +29,36 @@ function FlashSale() {
                     <h2>Eng yaxshi elektronika x12-gacha muddatli to'lovda</h2>
                     <Timer expiryTimestamp={time} />
                 </div>
-                <div className="col-md-6">
-                    <CCarousel controls indicators interval={2000}>
-                        <CCarouselItem>
-                            <CCarouselCaption>
-                                <h2>Yakubbaev Azamat</h2>
-                            </CCarouselCaption>
-                        </CCarouselItem>
-                        <CCarouselItem>
-                            <CCarouselCaption>
-                                <h2>Yakubbaev Azamat</h2>
-                            </CCarouselCaption>
-                        </CCarouselItem>
-                        <CCarouselItem>
-                            <CCarouselCaption>
-                                <h2>Yakubbaev Azamat</h2>
-                            </CCarouselCaption>
-                        </CCarouselItem>
-                    </CCarousel>
+                <div className="col-md-6 d-flex align-items-center justify-content-center">
+                    <div className="inner-container">
+                        <CCarousel indicators={true} interval={3000}>
+                            {
+                                flashData.map(data => {
+                                    return(
+                                        <CCarouselItem className='position-relative'>
+                                            <Link to={`/cart/${data.id}`} className='flash-inner-item'>
+                                                <div className="flash-item__img">
+                                                    <img src={data.image} alt="img" />
+                                                </div>
+                                                <div className="flash-item__data">
+                                                    <p className="flash-item__data-title">{data.title.substring(0,30) + '...'}</p>
+                                                    <div className="flash-item__data-price">
+                                                        <span className='flash-local-price'>$ {Math.floor(data.price * 0.92)}</span>
+                                                        <br />
+                                                        <span className="price-text-decoration">$ {data.price}</span>
+                                                        <span className="product-mini__discount">-8%</span>
+                                                    </div>
+                                                    <div className="flash-item__slider__line"></div>
+                                                </div>
+                                            </Link>
+                                        </CCarouselItem>
+                                    )
+                                })
+                            }
+                        </CCarousel>
+                    </div>
                 </div>
             </div>
-            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Est atque enim blanditiis vel? Quisquam, rem accusantium praesentium pariatur repellat explicabo eaque facilis ipsa, alias animi rerum id at iure fugit! Sunt nisi animi amet recusandae expedita in, accusamus nihil consectetur ut tempore explicabo impedit vero illo placeat nemo commodi, iure a mollitia rerum, fugit veniam. Mollitia quaerat voluptatum quos quibusdam tempora quasi officiis rem, perferendis architecto quis, pariatur corrupti sapiente sunt voluptatibus illo nisi culpa quod animi sint expedita quisquam et deserunt ipsum. Exercitationem id necessitatibus libero ea commodi rerum accusamus, quia neque minima sint praesentium? Sequi, ab. Ex, eveniet?</p>
         </div>
     )
 }

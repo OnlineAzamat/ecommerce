@@ -55,6 +55,21 @@ a
         border-radius: 12px
         color: #fff
         padding: 45px 0px 45px 35px
+        .carousel-indicators
+            bottom: -40px
+            gap: .5rem
+            li
+                background-color: #fff
+                border-radius: 50%
+                cursor: pointer
+                height: 8px
+                opacity: .3
+                transition: .5s
+                width: 8px
+                &.active
+                    width: 30px
+                    opacity: 1
+                    border-radius: 5px
 
         h2
             font-size: 2.2rem
@@ -82,10 +97,93 @@ a
                     font-weight: 400
                     display: block
         .carousel-item
-            // width: 464px
             height: 150px
-            background-color: #bf9898
-            border-radius: 12px
+
+        .inner-container
+            width: 464px
+            .flash-inner-item
+                background-color: #fff
+                border-radius: 12px
+                cursor: pointer
+                display: flex
+                height: 100%
+                left: 50%
+                padding: 0.5rem 0.8rem
+                position: absolute
+                top: 0
+                transform: translateX(-50%)
+                width: 80%
+                .flash-item__img
+                    align-items: center
+                    border-radius: 20px
+                    display: flex
+                    height: 139px
+                    margin-right: 10px
+                    max-width: 117px
+                    img
+                        width: 80%
+                        border-radius: 12px
+                        vertical-align: top
+                .flash-item__data
+                    width: 100%
+                .flash-item__data-title
+                    font-weight: 500
+                    height: 34px
+                    margin-top: 10px
+                    overflow: hidden
+                    color: #606266
+                    font-size: 14px
+                .flash-item__data-price
+                    position: relative
+                    span
+                        font-weight: 500
+                    span.flash-local-price
+                        color: #4d4d4d
+                    span.price-text-decoration
+                        text-decoration: line-through
+                        color: #9b9b9b
+                        padding: 10px 0
+                    .product-mini__discount
+                        background: #f71f1f
+                        border-radius: 4px
+                        color: #fff
+                        font-size: 14px
+                        margin-top: -0.7rem
+                        padding: 0.2rem 0.4rem
+                        position: absolute
+                        bottom: 0
+                        right: 0
+                .flash-item__slider__line
+                    background-color: rgba(255, 210, 0, .4)
+                    border-radius: 40px
+                    height: 10px
+                    margin-top: 10px
+                    position: relative
+                    width: 100%
+                    &::after
+                        background-color: #ffa325
+                        border-radius: 40px
+                        content: ''
+                        height: 10px
+                        left: 0
+                        position: absolute
+                        width: 75%
+
+.topbrands
+    margin-top: 5rem
+    .topbrands__list
+        ul
+            display: flex
+            flex-wrap: wrap
+            gap: 1rem
+            list-style-type: none
+            li
+                width: 139px
+                a
+                    color: #000
+                    text-align: center
+                    img
+                        width: 80%
 
 .scale-img
     -webkit-transform: scaleX(-1)
