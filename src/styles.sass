@@ -11,7 +11,7 @@ a
 
     input::placeholder
         color: white
-    ul.nav 
+    ul.nav
         li
             a
                 color: #fff
@@ -192,47 +192,176 @@ a
 .abd
     color: #333741
 
-.lds-ripple
-    display: inline-block
-    position: relative
-    width: 80px
-    height: 80px
-
-    & div
+.inner
+    position: absolute
+    top: 0
+    left: 0
+    z-index: 1
+    display: flex
+    align-items: center
+    justify-content: center
+    flex-direction: column
+    width: 100%
+    height: 100vh
+    background-color: #0e1538
+    .logo
         position: absolute
-        border: 4px solid #fa0000
-        opacity: 1
-        border-radius: 50%
-        animation: lds-ripple 1s cubic-bezier(0, 0.2, 0.8, 1) infinite
+        top: 35px
+        left: 50%
+        transform: translateX(-50%)
+.sign-up-page
+    position: relative
+    display: flex
+    flex-direction: column
+    align-items: center
+    margin-top: 10px
+    padding: 1.5rem
+    background-color: #0e1538
+    color: #fff
+    h1
+        font-size: 2rem
+        margin-bottom: 0
 
-    & div:nth-child(2)
-        animation-delay: -0.5s
-@keyframes lds-ripple
-    0%
-        top: 36px
-        left: 36px
-        width: 0
-        height: 0
-        opacity: 0
+    form
+        display: flex
+        flex-direction: column
+        align-items: center
 
-    4.9%
-        top: 36px
-        left: 36px
-        width: 0
-        height: 0
-        opacity: 0
+        .form-group
+            display: flex
+            flex-direction: column
+            margin-bottom: 20px
 
-    5%
-        top: 36px
-        left: 36px
-        width: 0
-        height: 0
-        opacity: 1
+        label
+            font-size: 1.2rem
+            margin-bottom: 5px
 
-    100%
-        top: 0px
-        left: 0px
-        width: 72px
-        height: 72px
-        opacity: 0
+        input
+            padding: 10px
+            border: none
+            border-radius: 5px
+            box-shadow: 0px 0px 5px rgba(0, 0, 0, 0.1)
+            background: rgba(255, 255, 255, 0.5)
+            font-size: 1.2rem
+            width: 300px
 
+        button
+            position: relative
+            padding: 10px 20px
+            border: none
+            border-radius: 15px
+            cursor: pointer
+            transition: 0.2s ease-in-out
+            background: linear-gradient(45deg,#00ccff,#d400d4)
+            span
+                color: #fff
+    &::before
+        content: ''
+        position: absolute
+        inset: -3px
+        background: linear-gradient(45deg,#00ccff,#0e1538,#0e1538,#d400d4)
+        z-index: -1
+        box-shadow: 0 0 0 20px #070c23
+        transition: 0.3s
+    &::after
+        content: ''
+        position: absolute
+        inset: -3px
+        background: linear-gradient(45deg,#00ccff,#0e1538,#0e1538,#d400d4)
+        z-index: -1
+        filter: blur(20px)
+        transition: 1.5s
+    &:hover:after,&:hover:before
+        transform: scale(1.1)
+
+footer
+    position: relative
+    top: 72px
+    color: #fff
+    .connected
+        padding: 15px 50px
+        background-color: rgb(100, 82, 206)
+        display: flex
+        align-items: center
+        justify-content: space-between
+        & :is(p,ul)
+            margin-bottom: 0
+
+        p
+            font-size: 1.1rem
+
+        ul
+            list-style-type: none
+            display: flex
+            align-items: center
+            gap: 0.5rem
+            a
+                display: flex
+                align-items: center
+                justify-content: center
+                border-radius: 50%
+                width: 35px
+                height: 35px
+                transition: 0.3s
+                i
+                    color: #fff
+                    font-size: 1.3rem
+                    transition: 0.3s
+                &:hover
+                    background-color: yellow
+                    i
+                        color: #000
+    .footer-data
+        backdrop-filter: blur(10px)
+        background-color: rgb(29, 35, 49)
+
+        .footer-data-inner
+            padding: 3rem 2.5rem
+            display: flex
+            justify-content: space-between
+            gap: 5rem
+            .footer-item
+                flex: 1
+                h4
+                    position: relative
+                    margin-bottom: 1.3rem
+                    &::after
+                        content: ''
+                        position: absolute
+                        left: 0
+                        bottom: -5px
+                        width: 80px
+                        height: 2px
+                        background-color: #6452CE
+                ul
+                    list-style: none
+                    display: flex
+                    flex-direction: column
+                    flex-wrap: wrap
+                    padding-left: 0
+                    gap: 0.5rem
+                    li
+                        a
+                            color: #fff
+                            position: relative
+                            &::after
+                                content: ''
+                                position: absolute
+                                left: 0
+                                bottom: -5px
+                                width: 0
+                                height: 2px
+                                background-color: #fff
+                                transition: 0.3s
+                            &:hover
+                                &::after
+                                    width: 100%
+
+                        i
+                            margin-right: 0.5rem
+    .copyright
+        padding: 1rem
+        display: flex
+        align-items: center
+        justify-content: center
+        background-color: #141B29

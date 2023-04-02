@@ -9,7 +9,7 @@ export const addCart = (product) => {
 // Cartdagi itemdi oshiriw
 export const deleteCart = (product) => {
     return{
-        type : "DELETEITEM",
+        type : "DELITEM",
         payload : product
     }
 }

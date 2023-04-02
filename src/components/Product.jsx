@@ -11,6 +11,7 @@ function Product() {
     const [product, setProduct] = useState([])
     const [loading, setLoading] = useState(false)
 
+    const token = window.localStorage.getItem('token')
     const dispatch = useDispatch();
     const addProduct = (product) => {
         dispatch(addCart(product));
@@ -68,7 +69,7 @@ function Product() {
                     <p className='lead'>
                         {product.description}
                     </p>
-                    <button className='btn btn-outline-dark px-4 py-2' onClick={() => addProduct(product)}>Add to Cart</button>
+                    <button className='btn btn-outline-dark px-4 py-2' onClick={() => addProduct(product)}><Link to={token ? "" : "/sign-up"}>Add to Cart</Link></button>
                     <Link to={"/cart"} className='btn btn-dark ms-2 px-3 py-2'>Go to Cart</Link>
                 </div>
             </>

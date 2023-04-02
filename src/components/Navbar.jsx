@@ -47,7 +47,7 @@ function Navbar() {
                         </form>
                         <div className="text-end">
                             {
-                                !token ? 
+                                token ? 
                                 (
                                     <>
                                         <Link to={"/favourites"} className="me-2">

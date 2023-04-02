@@ -1,4 +1,3 @@
-import axios from 'axios';
 import React, { useState, useEffect } from 'react'
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
@@ -63,7 +62,7 @@ function Products() {
                     filter.map(( products ) => {
                         return(
                             <>
-                                <div className="col-md-3">
+                                <div className="col-md-3" key={products.id + products.price}>
                                     <div className="card">
                                         <img src={products.image} className='card-img-top p-5' alt="card-img" />
                                         <div className="card-body">
@@ -85,9 +84,9 @@ function Products() {
 
     return (
         <div>
-            <div class="container my-5 py-5">
-                <div class="row">
-                    <div class="col-12 mb-5">
+            <div className="container my-5 py-5">
+                <div className="row">
+                    <div className="col-12 mb-5">
                         <h1 className='display-6 fw-bolder text-center'>Latest Products</h1>
                         <hr />
                     </div>
