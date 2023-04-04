@@ -2,16 +2,15 @@ import axios from 'axios';
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
-const SignUpPage = () => {
+const SignInPage = () => {
     const navigate = useNavigate()
     const [check, setcheck] = useState({})
     const [token, settoken] = useState('')
     const [username, setUsername] = useState('mor_2314');
     const [password, setPassword] = useState('83r5^_');
-    const [confirmPassword, setConfirmPassword] = useState('83r5^_');
     const [loading, setloading] = useState(
             <button type="submit">
-                <span>Sign Up</span>
+                <span>Sign In</span>
             </button>
         )
 
@@ -38,7 +37,7 @@ const SignUpPage = () => {
             })
     }
     function analyze() {
-        setloading(<button type="submit"><span>Sign Up</span></button>)
+        setloading(<button type="submit"><span>Sign In</span></button>)
         setcheck({})
     }
 
@@ -48,7 +47,7 @@ const SignUpPage = () => {
                 <img src="https://www.svgrepo.com/show/228332/shopping-cart.svg" className="bi me-2" width="80" height="80" aria-label="Bootstrap" alt="logo" />
             </Link>
             <div className="sign-up-page">
-                <h1>Sign Up</h1>
+                <h1>Sign In</h1>
                 <form onSubmit={handleSubmit} onChange={analyze}>
                     <div className="form-group">
                     <label htmlFor="username">Username:</label>
@@ -72,17 +71,6 @@ const SignUpPage = () => {
                         required
                     />
                     </div>
-                    <div className="form-group">
-                    <label htmlFor="confirm-password">Confirm Password:</label>
-                    <input
-                        type="password"
-                        id="confirm-password"
-                        value={confirmPassword}
-                        onChange={(event) => setConfirmPassword(event.target.value)}
-                        placeholder='Confirm Password'
-                        required
-                    />
-                    </div>
                     {
                         loading
                     }
@@ -103,4 +91,4 @@ const SignUpPage = () => {
     );
 };
 
-export default SignUpPage;
+export default SignInPage;

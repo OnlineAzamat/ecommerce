@@ -8,9 +8,10 @@ import Product from "./components/Product"
 import About from "./components/About"
 import Footer from "./components/Footer"
 import SignUpPage from "./components/SignUp"
-import Korzinka from "./components/Korzinka"
+import SignInPage from "./components/SignIn"
 import Page404 from "./components/404Page"
 import Cart from "./components/Cart"
+import Navigation from "./components/Navigation"
 
 function App() {
   return (
@@ -47,13 +48,15 @@ function App() {
           <Route path="/cart" element={
             <>
               <Navbar />
-              <Korzinka />
+              <Cart />
               <Footer />
             </>
           } />
           <Route path="/sign-up" element={<SignUpPage />} />
+          <Route path="/sign-in" element={<SignInPage />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
+        <Navigation />
     </BrowserRouter>
     // https://www.w3schools.com/js/js_cookies.asp  <<< qosiw kerek
     // https://codingartistweb.com/2022/01/cookie-consent-banner-html-css-javascript/

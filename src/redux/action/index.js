@@ -1,7 +1,7 @@
 // Cartlarga item qosiw
 export const addCart = (product) => {
     return{
-        type : "ADDITEM",
+        type : "ADDCART",
         payload : product
     }
 }

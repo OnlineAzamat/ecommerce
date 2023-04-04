@@ -2,7 +2,7 @@ import React from 'react'
 
 function About() {
     return (
-    <div className='container' style={{position: "relative",top: "72px", padding: "40px 0"}}>
+    <div className='container' style={{padding: "3vw 0"}}>
         <h3>NewStore haqida</h3>
         <p>NewStore - bu 30 000 dan ortiq mahalliy va xorijiy ishlab chiqaruvchilarning 6 milliondan ortiq mahsulotlari, shu jumladan kiyim-kechak, mobil telefon, elektronika, maishiy texnika, kosmetika, o'yinchoqlar, uy va bog' uchun mahsulotlar taklif qiluvchi "Hozir sotib ol, pulini keyin to'la" deb nomlanuvchi NewPay savdo maydonchasidir! Siz NewStore da ko'rsatilgan qiymatini mahalliy valyutada to'lab olish sharti bilan yoki NewPay bo'lib to'lash yordamida xarid qilishingiz mumkin. NewPay 4 yoki 6 foizsiz to'lov usullarini yoki yetkazib bergandan so'ng 14 kun ichida foizsiz qoplab beriladigan "To'lov yetkazib berilgandan keyin bajariladi" opsiyasini taklif qiladi. NewPay ilovasi to'liq onlayn va bo'lib to'lashning ma'qullanishi bir lahzada amalga oshiriladi!</p>
         <br />
@@ -42,7 +42,7 @@ function About() {
                 </li>
             </ul>
             <p>
-Bundan tashqari, ZoodMall maydonchasida siz:
+Bundan tashqari, NewStore maydonchasida siz:
             </p>
             <ul>
                 <li>
