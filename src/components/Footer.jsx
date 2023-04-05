@@ -1,12 +1,14 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 function Footer() {
+    const { t } = useTranslation()
     return (
         <footer>
             <div className="inner-wrapper">
                 <div className="connected">
-                    <p>Get connected with us on social networks:</p>
+                    <p>{t('footer connected links')}:</p>
                     <ul>
                         <li>
                             <Link to="https://facebook.com/">
@@ -37,32 +39,32 @@ function Footer() {
                             <p>Lorem ipsum dolor sit, amet consectetur adipisicing elit. Voluptatum, rerum corrupti maiores nobis ipsa sapiente iusto necessitatibus? Cupiditate sequi quos corrupti incidunt quibusdam. Provident, ea.</p>
                         </div>
                         <div className="footer-item">
-                            <h4>PRODUCTS</h4>
+                            <h4 style={{textTransform: "uppercase"}}>{t('products')}</h4>
                             <ul>
                                 <li>
                                     <Link to="/profile">
-                                        Your Account
+                                        {t('footer account')}
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/products">
-                                        Clothing
+                                        {t('footer clothing')}
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="/about">
-                                        About
+                                        {t('about')}
                                     </Link>
                                 </li>
                                 <li>
                                     <Link to="help">
-                                        Help
+                                        {t('footer help')}
                                     </Link>
                                 </li>
                             </ul>
                         </div>
                         <div className="footer-item">
-                            <h4>CONTACT</h4>
+                            <h4 style={{textTransform: "uppercase"}}>{t('contact')}</h4>
                             <ul>
                                 <li>
                                     <i className='fa fa-home'></i>

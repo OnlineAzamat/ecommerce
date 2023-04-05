@@ -2,8 +2,11 @@ import React, { useState, useEffect } from 'react'
 import Skeleton from 'react-loading-skeleton';
 import 'react-loading-skeleton/dist/skeleton.css'
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function Products() {
+    const { t } = useTranslation()
+
     const [data, setdata] = useState([]);
     const [filter, setFilter] = useState(data);
     const [loading, setLoading] = useState(false)
@@ -52,11 +55,11 @@ function Products() {
         return (
             <>
                 <div className="buttons d-flex justify-content-center mb-5 pb-5">
-                    <button className="btn btn-outline-dark me-2" onClick={() => setFilter(data)}>All</button>
-                    <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("men's clothing")}>Men's Clothing</button>
-                    <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("women's clothing")}>Women's Clothing</button>
-                    <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("jewelery")}>Jewelery Clothing</button>
-                    <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("electronics")}>Electronic</button>
+                    <button className="btn btn-outline-dark me-2" onClick={() => setFilter(data)}>{t('all')}</button>
+                    <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("men's clothing")}>{t("mens clothing")}</button>
+                    <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("women's clothing")}>{t('womens clothing')}</button>
+                    <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("jewelery")}>{t('jewelery clothing')}</button>
+                    <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("electronics")}>{t('electronics')}</button>
                 </div>
                 {
                     filter.map(( products ) => {
@@ -70,7 +73,7 @@ function Products() {
                                                 products.title.substring(0,15)
                                             }</h5>
                                             <p className='card-text'>${products.price}</p>
-                                            <Link to={`/products/${products.id}`} className='btn btn-primary'>Buy Now</Link>
+                                            <Link to={`/products/${products.id}`} className='btn btn-primary'>{t('buy now')}</Link>
                                         </div>
                                     </div>
                                 </div>
@@ -87,7 +90,7 @@ function Products() {
             <div className="container my-5 py-5">
                 <div className="row">
                     <div className="col-12 mb-5">
-                        <h1 className='display-6 fw-bolder text-center'>Latest Products</h1>
+                        <h1 className='display-6 fw-bolder text-center'>{t('latest products')}</h1>
                         <hr />
                     </div>
                 </div>

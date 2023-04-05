@@ -1,12 +1,15 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 function TopBrands() {
+    const { t } = useTranslation();
+
     return (
         <div className='container topbrands'>
             <div className="inner-wrapper">
                 <div className="title">
-                    <h2>Mashhur brendlar</h2>
+                    <h2>{t('top brands')}</h2>
                 </div>
                 <div className="topbrands__list">
                     <ul>
@@ -70,8 +73,8 @@ function TopBrands() {
                 </div>
             </div>
             <div className="col-12 mt-5">
-                <h2>NewStore: Hozir xarid qiling, pulini keyinroq to'lang</h2>
-                <p>Onlayn-xaridlar - taraqqiyot tomonga dadil qadamlarning namoyonidir. Bu sotuvchilar uchun ham, xaridorlar uchun ham qulay: mijoz o’ziga kerakli mahsulotlarni qidirishda vaqt tejaydi. Kerakli mahsulotni tanlashga bir nechagina daqiqa ajratib, qimmat bo’lmagan taklifni topish mumkin va bunda xaridingis uyizga yetkazilib ham beriladi. Shveytsariyaning OrientSwiss kompaniyasi NewStore deb nomlangan B2C formatidagi savdo maydonchasi ilovasini va saytini ishga tushirish orqali onlayn-xaridlarni takomillashtirmoqda va yanada hammabop qilmoqda.</p>
+                <h2>NewStore: {t('shop happiness')}</h2>
+                <p>{t('shop happiness t')}</p>
             </div>
         </div>
     )

@@ -3,31 +3,36 @@ import Timer from './Timer'
 import { CCarousel, CCarouselItem } from "@coreui/react"
 import axios from 'axios';
 import { Link } from 'react-router-dom';
+import { useTranslation } from 'react-i18next';
 
 function FlashSale() {
-    const [flashData, setFlashData] = useState([])
-    const time = new Date();
-    time.setMinutes(time.getMinutes() + 720);
+    const { t } = useTranslation();
 
+    // axios get --> flash data
+    const [flashData, setFlashData] = useState([])
+    
     useEffect(() => {
         getFlashData()
     }, [])
-
+    
     function getFlashData() {
         axios.get('https://fakestoreapi.com/products?limit=10')
-            .then(data => {
-                console.log(data.data)
-                setFlashData(data.data)
-            })
-            .catch(err => console.log(err))
+        .then(data => {
+            setFlashData(data.data)
+        })
+        .catch(err => console.log(err))
     }
+    
+    // Timer
+    const time = new Date("Aprel 11, 2023 09:00:00");
+    time.setMinutes(time.getMinutes());
 
     return (
         <div className='container flash-sale'>
             <div className="row justify-content-between align-items-center flash-sale__container">
                 <div className="col-md-5">
-                    <h2>Eng yaxshi elektronika x12-gacha muddatli to'lovda</h2>
-                    <Timer expiryTimestamp={time} />
+                    <h2>{t('flash sale')}</h2>
+                    <Timer expiryTimestamp={time} autoStart={true} />
                 </div>
                 <div className="col-md-6 d-flex align-items-center justify-content-center">
                     <div className="inner-container">

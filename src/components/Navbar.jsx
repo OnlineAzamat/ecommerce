@@ -1,8 +1,12 @@
 import React, { useEffect, useState } from 'react'
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux";
+import i18n from '../lang/i18n';
+import { useTranslation } from 'react-i18next';
 
 function Navbar() {
+    const { t } = useTranslation()
+
     const state = useSelector((state) => state.handleCart)
     const token = window.localStorage.getItem('token');
 
@@ -37,13 +41,13 @@ function Navbar() {
                                 <img src="https://www.svgrepo.com/show/228332/shopping-cart.svg" className="bi me-2" width="40" height="32" aria-label="Bootstrap" alt="logo" />
                             </Link>
                             <ul className="nav col-12 col-lg-auto col-md-6 me-lg-auto mb-2 justify-content-center mb-md-0">
-                                <li><Link to="/" className="nav-link px-2" style={{color: "#adb5bd"}}>Home</Link></li>
-                                <li><Link to="/products" className="nav-link px-2">Products</Link></li>
-                                <li><Link to="/about" className="nav-link px-2">About</Link></li>
-                                <li><Link to="/contact" className="nav-link px-2">Contact</Link></li>
+                                <li><Link to="/" className="nav-link px-2" style={{color: "#adb5bd"}}>{t('home')}</Link></li>
+                                <li><Link to="/products" className="nav-link px-2">{t('products')}</Link></li>
+                                <li><Link to="/about" className="nav-link px-2">{t('about')}</Link></li>
+                                <li><Link to="/contact" className="nav-link px-2">{t('contact')}</Link></li>
                             </ul>
                             <form className="col-12 col-lg-auto mb-lg-0 me-lg-3 search-form" role="search">
-                                <input type="search" style={{backgroundColor: "transparent"}} className="form-control form-control-dark" placeholder="Search..." aria-label="Search" />
+                                <input type="search" style={{backgroundColor: "transparent"}} className="form-control form-control-dark" placeholder={t('search')} aria-label="Search" />
                             </form>
                             <div className="text-end ms-2">
                                 {

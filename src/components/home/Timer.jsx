@@ -1,48 +1,35 @@
 import React, { useEffect } from 'react'
+import { useTranslation } from 'react-i18next';
+import { useTimer } from 'react-timer-hook';
 
-function Timer() {
-    const countdown = () => {
-        const countDate = new Date("Aprel 11, 2023 09:00:00").getTime();
-        const now = new Date().getTime();
-        const gap = countDate - now;
+function Timer({ expiryTimestamp }) {
+    const { t } = useTranslation()
 
-        const second = 1000;
-        const minute = second * 60;
-        const hour = minute * 60;
-        const day = hour * 24;
-
-        const textDay = Math.floor(gap / day);
-        const textHour = Math.floor((gap % day) / hour);
-        const textMinute = Math.floor((gap % hour) / minute);
-        const textSecond = Math.floor((gap % minute) / second);
-
-        return(
-            <>
-                <div className="timer__item">
-                    {textDay}
-                    <span>kunlar</span>
-                </div>
-                <div className="timer__item">
-                    {textHour}
-                    <span>soatlar</span>
-                </div>
-                <div className="timer__item">
-                    {textMinute}
-                    <span>daqiqalar</span>
-                </div>
-                <div className="timer__item">
-                    {textSecond}
-                    <span>soniyalar</span>
-                </div>
-            </>
-        )
-    }
+    const {
+        seconds,
+        minutes,
+        hours,
+        days
+    } = useTimer({ expiryTimestamp, onExpire: () => console.warn('onExpire called') });
 
     return (
         <div className="timer timer-big">
-            {
-                countdown()
-            }
+            <div className="timer__item">
+                {days}
+                <span>{t('days')}</span>
+            </div>
+            <div className="timer__item">
+                {hours}
+                <span>{t('hours')}</span>
+            </div>
+            <div className="timer__item">
+                {minutes}
+                <span>{t('minutes')}</span>
+            </div>
+            <div className="timer__item">
+                {seconds}
+                <span>{t('seconds')}</span>
+            </div>
         </div>
     )
 }
