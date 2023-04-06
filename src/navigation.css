@@ -6,7 +6,7 @@
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 400px;
+    width: 100%;
     height: 70px;
     display: none;
     justify-content: center;
@@ -47,7 +47,7 @@
     color: var(--clr);
 }
 
-.navigation ul li:hover a .icon {
+.navigation ul li.active a .icon {
     transform: translateY(-35px);
 }
 
@@ -63,7 +63,7 @@
     opacity: 0;
 }
 
-.navigation ul li:hover a .text {
+.navigation ul li.active a .text, .navigation ul li:active a .text {
     transform: translate(-50%,10px);
     opacity: 1;
 }
@@ -101,19 +101,29 @@
     box-shadow: 0px -10px 0 0 rgba(0, 0, 0, 0);
 }
 
-.navigation ul li:nth-child(1):hover ~ .indicator {
+.navigation ul li:nth-child(1).active ~ .indicator, 
+.navigation ul li:nth-child(1):active ~ .indicator 
+{
     transform: translateX(calc(70px * 0));
 }
-.navigation ul li:nth-child(2):hover ~ .indicator {
+.navigation ul li:nth-child(2).active ~ .indicator,
+.navigation ul li:nth-child(2):active ~ .indicator
+{
     transform: translateX(calc(70px * 1 - 3px));
 }
-.navigation ul li:nth-child(3):hover ~ .indicator {
+.navigation ul li:nth-child(3).active ~ .indicator,
+.navigation ul li:nth-child(3):active ~ .indicator
+{
     transform: translateX(calc(70px * 2 - 3px));
 }
-.navigation ul li:nth-child(4):hover ~ .indicator {
+.navigation ul li:nth-child(4).active ~ .indicator,
+.navigation ul li:nth-child(4):active ~ .indicator
+{
     transform: translateX(calc(70px * 3 - 6px));
 }
-.navigation ul li:nth-child(5):hover ~ .indicator {
+.navigation ul li:nth-child(5).active ~ .indicator,
+.navigation ul li:nth-child(5):active ~ .indicator
+{
     transform: translateX(calc(70px * 4 - 6px));
 }
 

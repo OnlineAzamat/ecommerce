@@ -1,11 +1,13 @@
-import React, { useEffect, useState } from 'react'
+import React, { useEffect, useRef, useState } from 'react'
 import { Link } from "react-router-dom"
 import { useSelector } from "react-redux";
 import i18n from '../lang/i18n';
 import { useTranslation } from 'react-i18next';
+import { changeLanguage } from 'i18next';
 
 function Navbar() {
     const { t } = useTranslation()
+    const select = useRef(null)
 
     const state = useSelector((state) => state.handleCart)
     const token = window.localStorage.getItem('token');
@@ -31,6 +33,15 @@ function Navbar() {
         };
     }, []);
 
+    function changeLang(langVal) {
+        window.localStorage.setItem('lang', langVal)
+        if(window.localStorage.getItem('lang')) {
+            changeLanguage(window.localStorage.getItem('lang'))
+        } else{
+            changeLanguage(langVal)
+        }
+    }
+
     return (
         <div className='nav-container'>
             <div className="Navbar" style={{position: navPos}}>
@@ -48,6 +59,12 @@ function Navbar() {
                             </ul>
                             <form className="col-12 col-lg-auto mb-lg-0 me-lg-3 search-form" role="search">
                                 <input type="search" style={{backgroundColor: "transparent"}} className="form-control form-control-dark" placeholder={t('search')} aria-label="Search" />
+                                <select name="lang" className='form-select form-select-lang' ref={select} onChange={(e) => changeLang(e.target.value)}>
+                                    <option value="en">en</option>
+                                    <option value="uz">uz</option>
+                                    <option value="qq">qq</option>
+                                    <option value="ru">ru</option>
+                                </select>
                             </form>
                             <div className="text-end ms-2">
                                 {

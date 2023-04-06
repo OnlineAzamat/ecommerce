@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { useTranslation } from 'react-i18next';
 
 function Products() {
-    const { t } = useTranslation()
+    const { t } = useTranslation();
 
     const [data, setdata] = useState([]);
     const [filter, setFilter] = useState(data);
@@ -54,7 +54,7 @@ function Products() {
     const ShowProducts = () => {
         return (
             <>
-                <div className="buttons d-flex justify-content-center mb-5 pb-5">
+                <div className="buttons d-flex flex-wrap gap-1 justify-content-center mb-5 pb-5">
                     <button className="btn btn-outline-dark me-2" onClick={() => setFilter(data)}>{t('all')}</button>
                     <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("men's clothing")}>{t("mens clothing")}</button>
                     <button className="btn btn-outline-dark me-2" onClick={() => filterProduct("women's clothing")}>{t('womens clothing')}</button>
@@ -65,7 +65,7 @@ function Products() {
                     filter.map(( products ) => {
                         return(
                             <>
-                                <div className="col-md-3" key={products.id + products.price}>
+                                <div className="col-md-3 mt-2 mb-2" key={products.id + products.price}>
                                     <div className="card">
                                         <img src={products.image} className='card-img-top p-5' alt="card-img" />
                                         <div className="card-body">

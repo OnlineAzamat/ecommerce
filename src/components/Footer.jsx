@@ -57,7 +57,7 @@ function Footer() {
                                     </Link>
                                 </li>
                                 <li>
-                                    <Link to="help">
+                                    <Link to="/contact">
                                         {t('footer help')}
                                     </Link>
                                 </li>

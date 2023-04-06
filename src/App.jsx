@@ -12,6 +12,7 @@ import SignInPage from "./components/SignIn"
 import Page404 from "./components/404Page"
 import Cart from "./components/Cart"
 import Navigation from "./components/Navigation"
+import Contact from "./components/Contact"
 
 function App() {
   return (
@@ -52,11 +53,20 @@ function App() {
               <Footer />
             </>
           } />
+          <Route path="/contact" element={
+            <>
+              <Navbar />
+              <Contact />
+              <Footer />
+            </>
+          } />
           <Route path="/sign-up" element={<SignUpPage />} />
           <Route path="/sign-in" element={<SignInPage />} />
           <Route path="*" element={<Page404 />} />
         </Routes>
-        <Navigation />
+        {
+          window.location.pathname == "/sign-in" || window.location.pathname == "sign-up" ? null : <Navigation />
+        }
     </BrowserRouter>
     // https://www.w3schools.com/js/js_cookies.asp  <<< qosiw kerek
     // https://codingartistweb.com/2022/01/cookie-consent-banner-html-css-javascript/
