@@ -63,7 +63,6 @@ function Navbar() {
                                     <option value="en">en</option>
                                     <option value="uz">uz</option>
                                     <option value="qq">qq</option>
-                                    <option value="ru">ru</option>
                                 </select>
                             </form>
                             <div className="text-end ms-2">

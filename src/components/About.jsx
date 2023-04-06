@@ -5,7 +5,7 @@ function About() {
     const { t } = useTranslation()
 
     return (
-    <div className='container' style={{padding: "3vw 0"}}>
+    <div className='container' style={{padding: "3vw 14px"}}>
         <h3>{t('about us')}</h3>
         <p>{t('about us t')}</p>
         <br />

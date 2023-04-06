@@ -196,6 +196,19 @@ a
                     img
                         width: 80%
 
+.products-filter
+    width: 20%
+    padding: 1.5rem
+    background-color: aliceblue
+
+.inner-products
+    display: flex
+.products-container
+    display: flex
+
+    .product-img
+        padding: 2rem
+
 .abd
     color: #333741
 
@@ -393,7 +406,39 @@ footer
     .search-form
         width: 150px
 
+    .products-container
+        .card-body
+            padding: 0.7rem
+            h5
+                font-size: 0.8rem
+            .btn-primary
+                font-size: 1rem
+                line-height: 1
+            .card-text
+                margin-bottom: 8px
+        .product-img
+            padding: 0.5rem
+
 @media (max-width: 576px)
+    .inner-products
+        flex-direction: column
+        .products-filter
+            width: 100%
+        .card-body
+            padding: 0.5rem
+            h5
+                font-size: 0.6rem
+            .btn-primary
+                font-size: 0.8rem
+                line-height: 0.8
+            .card-text
+                font-size: 0.8rem
+                margin-bottom: 5px
+        .buttons
+            padding-bottom: 1rem
+        .container
+            padding: 2rem 1rem
+
     .nav-container
         height: auto
     .mobile-nav-replace
