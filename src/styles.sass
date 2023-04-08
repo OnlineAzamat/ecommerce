@@ -402,6 +402,47 @@ footer
         justify-content: center
         background-color: #141B29
 
+.cookie
+    position: fixed
+    bottom: 10px
+    left: 50%
+    transform: translateX(-50%)
+    backdrop-filter: blur(10px)
+    border-radius: 10px
+    width: 80%
+    padding: 15px
+    z-index: 1000
+    background-color: rgba(59, 59, 59, .5)
+    color: #fff
+    p
+        font-size: .9rem
+        margin-bottom: 0.5rem
+    button
+        position: relative
+        background-color: #44991a
+        color: #fff
+        padding: 5px 15px
+        border-radius: 3px
+        border: 0
+        outline: 0
+        transition: 0.3s
+        &::before
+            content: ''
+            position: absolute
+            bottom: -3px
+            border-radius: 3px
+            left: 2px
+            width: 100%
+            height: 100%
+            background-color: #90eb63
+            z-index: -1
+        &:hover
+            background-color: #4ebc17
+        &:active
+            &::before
+                bottom: -1px
+                left: 1px
+
 @media (max-width: 768px)
     .search-form
         width: 150px
@@ -472,6 +513,9 @@ footer
             padding: 15px
             p
                 font-size: 1rem
-        .footer-data .footer-data-inner 
+        .footer-data .footer-data-inner
             padding: 15px
 
+    .cookie
+        width: 95%
+        bottom: 110px

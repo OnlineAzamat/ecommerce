@@ -6,8 +6,8 @@ import { useTranslation } from 'react-i18next';
 
 function Products() {
 	const { t } = useTranslation();
-    const min = useRef(null);
-    const max = useRef(null);
+	const min = useRef(null);
+	const max = useRef(null);
 
 	const [data, setdata] = useState([]);
 	const [filter, setFilter] = useState(data);
@@ -53,6 +53,16 @@ function Products() {
 		setFilter(updateList);
 	};
 
+	function NotFound() {
+		return (
+			<div className="notfound">
+				<p style={{ textAlign: 'center', padding: '30px' }}>
+					Heshnarse tabilmadi.
+				</p>
+			</div>
+		);
+	}
+
 	const ShowProducts = () => {
 		return (
 			<>
@@ -88,36 +98,40 @@ function Products() {
 						{t('electronics')}
 					</button>
 				</div>
-				{filter.map((products) => {
-					return (
-						<>
-							<div
-								className="col-md-3 col-3 mt-2 mb-2 p-1"
-								key={products.id + products.price}
-							>
-								<div className="card">
-									<img
-										src={products.image}
-										className="card-img-top product-img"
-										alt="card-img"
-									/>
-									<div className="card-body">
-										<h5 className="card-title">
-											{products.title.substring(0, 15)}
-										</h5>
-										<p className="card-text">${products.price}</p>
-										<Link
-											to={`/products/${products.id}`}
-											className="btn btn-primary"
-										>
-											{t('buy now')}
-										</Link>
+				{filter[0] ? (
+					filter.map((products) => {
+						return (
+							<>
+								<div
+									className="col-md-3 col-3 mt-2 mb-2 p-1"
+									key={products.id + products.price}
+								>
+									<div className="card">
+										<img
+											src={products.image}
+											className="card-img-top product-img"
+											alt="card-img"
+										/>
+										<div className="card-body">
+											<h5 className="card-title">
+												{products.title.substring(0, 15)}
+											</h5>
+											<p className="card-text">${products.price}</p>
+											<Link
+												to={`/products/${products.id}`}
+												className="btn btn-primary"
+											>
+												{t('buy now')}
+											</Link>
+										</div>
 									</div>
 								</div>
-							</div>
-						</>
-					);
-				})}
+							</>
+						);
+					})
+				) : (
+					<NotFound />
+				)}
 			</>
 		);
 	};
@@ -130,7 +144,7 @@ function Products() {
 	};
 
 	return (
-		<div className='inner-products'>
+		<div className="inner-products">
 			<div className="products-filter">
 				<div data-accordion-item className="bx--accordion__item">
 					<p>Price</p>
