@@ -73,7 +73,6 @@ function Footer() {
 										<select
 											name="lang"
 											className="form-select form-select-lang"
-											ref={select}
 											onChange={(e) => changeLang(e.target.value)}
 										>
 											<option value="en">en</option>
