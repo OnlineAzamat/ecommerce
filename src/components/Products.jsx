@@ -56,9 +56,7 @@ function Products() {
 	function NotFound() {
 		return (
 			<div className="notfound">
-				<p style={{ textAlign: 'center', padding: '30px' }}>
-					Heshnarse tabilmadi.
-				</p>
+				<p style={{ textAlign: 'center', padding: '30px' }}>{t('not found')}</p>
 			</div>
 		);
 	}

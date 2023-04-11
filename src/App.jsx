@@ -12,8 +12,8 @@ import SignInPage from './components/SignIn';
 import Page404 from './components/404Page';
 import Cart from './components/Cart';
 import Navigation from './components/Navigation';
-import Contact from './components/Contact';
-import Cookie from './components/Cookie';
+import Contact from './components/Contact'
+import Cookie from './components/Cookie'
 
 function App() {
 	return (
